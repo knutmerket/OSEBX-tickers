@@ -1,4 +1,6 @@
 """
+Author: Knut
+
 Script to fetch (and download) OSEBX tickers
 
 Relies on scraping with selenum, will need to be altered if the page is significantly altered (or moved).
