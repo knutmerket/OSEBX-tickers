@@ -1,10 +1,10 @@
 """
 Script to fetch (and download) OSEBX tickers
 
-Relies on scraping with selenum, so will obviously need to be altered if the page is significantly altered (or moved).
+Relies on scraping with selenum, will need to be altered if the page is significantly altered (or moved).
 """
 
-import pandas as pd
+import csv
 
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
@@ -32,4 +32,7 @@ for row in rows[1:]:
 # Need to add a .OL suffix to the tickers for this to work with Yahoo Finance
 yf_tickers = [ticker + ".OL" for ticker in tickers]
 
-print(tickers)
+# Write csv file containing one "column" for tickers and one for YF suffixed tickers
+with open("tickers.csv", 'w') as f:
+    writer = csv.writer(f)
+    writer.writerows(zip(tickers, yf_tickers))
